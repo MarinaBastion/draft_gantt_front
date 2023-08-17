@@ -1,0 +1,104 @@
+<mat-expansion-panel (opened)="panelOpenState = true"
+(closed)="panelOpenState = false" >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Добавить поле
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="col_fields">
+        <mat-form-field appearance="fill">
+            <mat-label>Наименование</mat-label>
+            <input matInput [(ngModel)]="selectedName">
+        </mat-form-field>
+       
+        <mat-form-field appearance="fill">
+            <mat-label>Описание</mat-label>
+            <textarea matInput [(ngModel)]="selectedDescription"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+        <mat-label>Тип данных</mat-label>
+        <mat-select [(ngModel)]="selectedType" >
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let name of enumKeys" [value]="name"> {{ name }} </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div *ngIf="selectedType === 'Entity'; then entityBlock "></div>
+    <div *ngIf="isInstanceEmpty; then instancesBlock"></div>
+    
+    <ng-template #entityBlock>
+      <mat-form-field appearance="fill">
+      <mat-label>Сущность</mat-label>
+      <mat-select [(ngModel)]="selectedEntity" (selectionChange)="onEntityChanged()"  [ngModelOptions]="{standalone: true}">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let name of listOfEntities" [value]="name.id"> {{ name.name }} </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </ng-template>
+    <ng-template #instancesBlock>
+      <mat-form-field appearance="fill">
+      <mat-label>Српавочник</mat-label>
+      <mat-select [(ngModel)]="selectedInstance"  [ngModelOptions]="{standalone: true}">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let name of listOfInstances" [value]="name.id"> {{ name.name }} </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </ng-template>
+    <ng-template #elseBlock></ng-template>
+    </div>
+      
+<!-- #docregion action-bar -->
+    <mat-action-row>
+      <button mat-button color="primary" (click)="addField()">Добавить</button>
+    </mat-action-row>
+<!-- #enddocregion action-bar -->
+  </mat-expansion-panel>
+
+  <cdk-accordion class="example-accordion"  >
+    <cdk-accordion-item
+      *ngFor="let item of listOfFields; let index = index;"
+      #accordionItem="cdkAccordionItem"
+      class="example-accordion-item"
+      role="button"
+      tabindex="0"
+      [attr.id]="'accordion-header-' + index"
+      [attr.aria-expanded]="accordionItem.expanded"
+      [attr.aria-controls]="'accordion-body-' + index">
+      <div class="example-accordion-item-header" (click)="accordionItem.toggle();expansionPanelIndex(item.id)">
+        {{ item.name }}
+        <span class="example-accordion-item-description">
+          Click to {{ accordionItem.expanded ? 'close' : 'open' }}
+        </span>
+      </div>
+      <div
+        class="example-accordion-item-body"
+        role="region"
+        [style.display]="accordionItem.expanded ? '' : 'none'"
+        [attr.id]="'accordion-body-' + index"
+        [attr.aria-labelledby]="'accordion-header-' + index" > 
+        <div class="col_fields">
+            <mat-form-field appearance="fill">
+                <mat-label>Наименование</mat-label>
+                <input matInput [(ngModel)]="selectedNameForEdit">
+            </mat-form-field>
+           
+            <mat-form-field appearance="fill">
+                <mat-label>Описание</mat-label>
+                <textarea matInput [(ngModel)]="selectedDescriptionForEdit"></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Тип данных</mat-label>
+              <mat-select [(ngModel)]="selectedType" >
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let name of enumKeys" [value]="name"> {{ name }} </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="selectedType === 'Entity'; then entityBlock "></div>
+            <div *ngIf="isInstanceEmpty; then instancesBlock"></div>
+
+            <button mat-button color="primary" (click)="saveField(item.id,selectedNameForEdit,selectedDescriptionForEdit)">Сохранить</button>
+          </div>
+      </div>
+    </cdk-accordion-item>
+  </cdk-accordion>
+ 

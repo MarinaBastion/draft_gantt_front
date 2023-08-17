@@ -1,6 +1,30 @@
 {
   "name": "gantt-front",
-  "version": "0.0.0",
+  "version": "7.1.9",
+  "description": "An open source JavaScript Gantt chart that helps you illustrate a project schedule in a nice-looking chart.",
+  "main": "codebase/dhtmlxgantt.js",
+  "types": "codebase/dhtmlxgantt.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DHTMLX/gantt.git"
+  },
+  "keywords": [
+    "gantt",
+    "chart",
+    "gantt chart",
+    "calendar",
+    "scheduler",
+    "dhtmlx",
+    "dhtmlxgantt",
+    "timeline",
+    "browser"
+  ],
+  "author": "DHTMLX",
+  "license": "SEE LICENSE IN license.txt",
+  "bugs": {
+    "url": "https://github.com/DHTMLX/gantt/issues"
+  },
+  "homepage": "https://github.com/DHTMLX/gantt#readme",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,13 +35,19 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.3.0",
+    "@angular/cdk": "^13.3.9",
     "@angular/common": "~13.3.0",
     "@angular/compiler": "~13.3.0",
     "@angular/core": "~13.3.0",
     "@angular/forms": "~13.3.0",
+    "@angular/material": "^13.3.9",
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
+    "@angular/material-moment-adapter": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "bootstrap": "^5.2.0",
+    "dhtmlx-gantt": "file:../../../packages/gantt_7",
+    "moment": "^2.29.4",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

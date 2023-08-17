@@ -1,0 +1,69 @@
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+.example-icon {
+border: transparent;
+background-color: transparent;
+padding-top: 10px;
+color: #3249a8
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' -25,
+  'opsz' 48
+}
+.icon-display {
+    transform: scale(1.5);
+    color: #2e3f81;
+ }
+.font-title
+{
+    font-family: Inter,sans-serif;
+    font-size: 14px;
+    font-size: 30;
+    color:  #2e3f81;
+    padding-left: 10px;
+}
+mat-sidenav  {
+    width: 200px;
+    background-color: transparent;
+  }
+mat-sidenav-container{
+      height: calc(205vh - 115vh);
+  }
+
+  A {
+    text-decoration: none; /* Убирает подчеркивание для ссылок */
+} 
+A:hover { 
+    text-decoration: underline; /* Добавляем подчеркивание при наведении курсора на ссылку */
+    color: red; /* Ссылка красного цвета */
+} 
+  .topnav-centered {
+    margin-top: 30px;
+    text-align: center;
+  }
+.img_profile {
+    width: 30px;
+    height: 30px;
+    filter: invert(35%) sepia(65%) saturate(7496%) hue-rotate(225deg) brightness(88%) contrast(88%);
+}
+.mat-tree-menu-item  a div {
+    flex-direction: column;
+    font-family: Inter,sans-serif;
+    font-size: 14px;
+    color: #5580d3;
+}
+.mat-tree-menu-item {
+  font-family: Inter,sans-serif;
+  font-size: 14px;
+  background-color: transparent;
+  color: #5580d3;
+}
+.mat-tree-menu {
+  background-color: transparent;
+}

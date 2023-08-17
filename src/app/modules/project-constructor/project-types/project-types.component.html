@@ -1,0 +1,69 @@
+<mat-expansion-panel (opened)="panelOpenState = true"
+(closed)="panelOpenState = false" >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Добавить тип проекта
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="col_fields">
+        <mat-form-field appearance="fill">
+            <mat-label>Наименование</mat-label>
+            <input matInput [(ngModel)]="selectedName">
+        </mat-form-field>
+       
+        <mat-form-field appearance="fill">
+            <mat-label>Описание</mat-label>
+            <textarea matInput [(ngModel)]="selectedDescription"></textarea>
+        </mat-form-field>
+      </div>
+      
+<!-- #docregion action-bar -->
+    <mat-action-row>
+      <button mat-button color="primary" (click)="addProjectType()">Добавить</button>
+    </mat-action-row>
+<!-- #enddocregion action-bar -->
+  </mat-expansion-panel>
+
+  <cdk-accordion class="example-accordion"  >
+    <cdk-accordion-item
+      *ngFor="let item of listOfProjectTypes; let index = index;"
+      #accordionItem="cdkAccordionItem"
+      class="example-accordion-item"
+      role="button"
+      tabindex="0"
+      [attr.id]="'accordion-header-' + index"
+      [attr.aria-expanded]="accordionItem.expanded"
+      [attr.aria-controls]="'accordion-body-' + index">
+      <div class="div-header">
+        <div class="example-accordion-item-header" (click)="accordionItem.toggle();expansionPanelIndex(item.id)">
+            {{ item.name }}
+            <span class="example-accordion-item-description">
+            Click to {{ accordionItem.expanded ? 'close' : 'open' }}
+            </span>
+        </div>
+        <button mat-button (click) = "deleteProjectType(item.id)" >
+            <mat-icon svgIcon="trash" class="svg_icon_size"></mat-icon>
+        </button>
+      </div>
+      <div
+        class="example-accordion-item-body"
+        role="region"
+        [style.display]="accordionItem.expanded ? '' : 'none'"
+        [attr.id]="'accordion-body-' + index"
+        [attr.aria-labelledby]="'accordion-header-' + index" > 
+        <div class="col_fields">
+            <mat-form-field appearance="fill">
+                <mat-label>Наименование</mat-label>
+                <input matInput [(ngModel)]="selectedNameForEdit">
+            </mat-form-field>
+           
+            <mat-form-field appearance="fill">
+                <mat-label>Описание</mat-label>
+                <textarea matInput [(ngModel)]="selectedDescriptionForEdit"></textarea>
+            </mat-form-field>
+            <button mat-button color="primary" (click)="saveProjectType(item.id,selectedNameForEdit,selectedDescriptionForEdit)">Сохранить</button>
+          </div>
+      </div>
+    </cdk-accordion-item>
+  </cdk-accordion>
+ 

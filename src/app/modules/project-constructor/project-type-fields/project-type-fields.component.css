@@ -1,0 +1,25 @@
+.col_fields {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1.6em 20px;
+    padding: 1.6em 20px;
+    justify-content: center;
+  }
+  .col_fields_small {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1.6em 20px;
+    padding: 1.6em 20px;
+    background-color: rgba(232, 227, 227, 0.987);
+    justify-content: center;
+  }
+  .row_block {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+   
+    
+  }

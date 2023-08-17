@@ -1,0 +1,31 @@
+<div class="card" *ngIf="!invalidLogin">
+    <div class="card-body"><h1>Sign in</h1>
+        <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="login(loginForm.value)">
+            <div class="mb-3 row">
+                <label for="login" class="col-form-label col-sm-2">Login:</label>
+                <div class="col-md-5">
+                    <input type="text" id="login" formControlName="login" class="form-control" />
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="password" class="col-form-label col-sm-2">Password:</label>
+                <div class="col-md-5">
+                    <input type="password" id="password" formControlName="password" class="form-control" />
+                </div>
+            </div>
+            <br>
+            <div class="mb-3 row">
+                <div class="col-md-1">          
+                    <button type="submit" class="btn btn-info" [disabled]="!loginForm.valid">Sign In</button>
+                </div>
+            </div>
+            <br>
+            <div class="mb-3 row">
+                <div class="col-md-1">          
+                    <button class="btn btn-info" (click)="clickRegister()">Registration</button>
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>
+  <router-outlet></router-outlet>

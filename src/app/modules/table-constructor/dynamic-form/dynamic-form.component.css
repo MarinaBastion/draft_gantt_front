@@ -1,0 +1,10 @@
+.mat-form-field {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    min-width: 550px;
+    padding-right: 14px;
+}
+.btn-top {
+    padding-top: 10px;
+}

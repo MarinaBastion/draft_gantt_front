@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<mat-toolbar>
+    <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon" 
+    (click) = "opened=!opened" >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="font-title">ИСУП Бастион</span>
+    <span class="example-spacer"></span>
+    <span class="material-symbols-outlined icon-display">
+        person
+    </span>
+    <div class="mb-3 row">
+      <div class="col-md-1">          
+          <button class="btn btn-info" >Sign out</button>
+      </div>
+  </div>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav [(opened)]="opened" mode="side">
+        <mat-list>
+            <p class="topnav-centered">
+            <mat-list-item class="mat-tree-menu-item"><a  routerLink="user_profile"><div><p>Ресурсы</p><p><img src="../../../assets/noun-users-943303.png" class="img_profile" alt="Ресурсы"  title="User profile"></p></div></a></mat-list-item>
+            </p>
+            <p class="topnav-centered">
+            <mat-list-item class="mat-tree-menu-item" ><a  routerLink="projects"><div><p>Проекты</p><p><img src="../../../assets/noun-gantt-chart-2129489.png" class="img_profile" alt="Проекты"  title="Проекты"></p></div></a></mat-list-item>
+            </p>
+            <p>
+                <mat-tree class="mat-tree-menu" [dataSource]="dataSource" [treeControl]="treeControl">
+                    <!-- This is the tree node template for leaf nodes -->
+                    <mat-tree-node class="mat-tree-menu-item" *matTreeNodeDef="let node" matTreeNodePadding>
+                      <!-- use a disabled button to provide padding for tree leaf -->
+                      <button mat-icon-button disabled></button>
+                      <a  [routerLink]="[node.url]"><div><p> {{node.name}}</p></div></a>
+                     
+                    </mat-tree-node>
+                    <!-- This is the tree node template for expandable nodes -->
+                    <mat-tree-node class="mat-tree-menu-item" *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+                      <button mat-icon-button matTreeNodeToggle
+                              [attr.aria-label]="'Toggle ' + node.name">
+                        <mat-icon class="mat-icon-rtl-mirror">
+                          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                        </mat-icon>
+                      </button>
+                      {{node.name}}
+                    </mat-tree-node>
+                  </mat-tree>
+            </p>
+        </mat-list>
+    </mat-sidenav>
+<mat-sidenav-content>
+    <router-outlet></router-outlet>
+</mat-sidenav-content>
+</mat-sidenav-container>

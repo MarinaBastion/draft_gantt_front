@@ -1,0 +1,198 @@
+@import "../../../node_modules/dhtmlx-gantt/codebase/dhtmlxgantt.css";
+@import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
+.gantt-chart{
+    position: relative;
+    width: 100%;
+    height: 1000px;
+}
+html, body {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+}
+
+#gantt_here {
+    width:100%;
+    height:100%;
+}
+
+.gantt_grid_scale .gantt_grid_head_cell,
+.gantt_task .gantt_task_scale .gantt_scale_cell {
+    font-weight: bold;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.resource_marker{
+    text-align: center;
+}
+.resource_marker div{
+    width: 28px;
+    height: 28px;
+    line-height: 29px;
+    display: inline-block;
+    border-radius: 15px;
+    color: #FFF;
+    margin: 3px;
+}
+.resource_marker.workday_ok div {
+    background: #2a8dd4;
+}
+
+.resource_marker.workday_over div{
+    background: #ff8686;
+}
+
+
+
+.owner-label{
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    border-radius: 25px;
+    background: #e6e6e6;
+    color: #6f6f6f;
+    margin: 0 3px;
+    font-weight: bold;
+}
+.material-icons.color_blue { color: #2a8dd4; }
+.gantt_grid_scale, .gantt_task_scale, .gantt_task_vscroll {
+    background-color: #eee;
+}
+.gantt_grid_scale, .gantt_task_scale, 
+.gantt_task .gantt_task_scale .gantt_scale_cell,
+.gantt_grid_scale .gantt_grid_head_cell {
+    color: #000;
+    font-size: 12px;
+    border-bottom: 1px solid #cecece;
+  
+}
+.icon-text {
+    display: flex;
+    align-items: center;
+}
+
+
+.gantt_grid_scale, .gantt_task_scale, 
+.gantt_task .gantt_task_scale .gantt_scale_cell,
+.gantt_grid_scale .gantt_grid_head_cell {
+    color: #000;
+    font-size: 12px;
+   background-color: white;
+   border-color:  #2a8dd4;
+}
+.gantt_task_line, .gantt_line_wrapper {
+    margin-top: -9px;
+}
+.gantt_cal_light_wide .gantt_cal_lsection {
+    border: 0;
+    float: left;
+    text-align: right;
+    width: 80px;
+    height: fit-content !important;
+}
+.gantt_side_content {
+    margin-bottom: 7px;
+}
+
+.gantt_task_link .gantt_link_arrow {
+    margin-top: -12px
+}
+
+.gantt_side_content.gantt_right {
+    bottom: 0;
+}
+
+.summary_task{
+    position: absolute;
+    height: 10px;
+    border-top: 4px solid #2a8dd4;
+    background-color: transparent;
+    border-bottom: none ;
+    border-left: 2px solid #2a8dd4;
+    border-right: 2px solid #2a8dd4;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.summary_task .gantt_task_progress{
+    background:#293bdf;
+}
+.baseline {
+    position: absolute;
+    border-radius: 0px;
+    opacity: 0.6;
+    margin-top: -7px;
+    height: 12px;
+    background: #ffd180;
+    border: 1px solid rgb(255, 153, 0);
+}
+.custom-project {
+			position: absolute;
+			height: 10px;
+			 border-top: 4px solid black;
+    background-color: transparent;
+    border-bottom: none ;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+		}
+.button {
+    background-color: white; 
+    border-color: #2a8dd4;
+    border-style: hidden;
+    color: #2a8dd4;
+    text-align: center;
+    margin: 4px 2px;
+}
+
+.custom-project div {
+			position: absolute;
+		}
+  
+.gantt_task_line .gantt_task_progress {
+    background-color: #2a8dd4;
+}
+  .gantt_task_line{
+    height: 15px;
+    border-color:  #2a8dd4;
+    background-color: #a1c8f0;
+    
+}
+.gantt_task_line.gantt_task_content {
+    color: #fff;
+}
+
+  
+.gantt_line_wrapper div{
+    background-color: #a1c8f0;
+}
+ 
+.gantt_link_arrow_right {
+    border-left-color: #a1c8f0;
+}
+ 
+.gantt_link_arrow_left {
+    border-right-color: #a1c8f0;
+}
+/* progress of project bars */
+.gantt_task_line.gantt_bar_project .gantt_task_progress {
+  background-color: transparent;
+    
+}
+.gantt_cal_light_wide .gantt_section_time {
+    overflow: hidden;
+    padding-top: 2px!important;
+    padding-right: 0;
+    height: 40px!important;
+}
+.gantt_cal_light_wide .gantt_cal_ltext {
+    padding-right: 0;
+    height: 40px !important;
+}
+.gantt_cal_light_wide {
+    height: auto !important;
+}

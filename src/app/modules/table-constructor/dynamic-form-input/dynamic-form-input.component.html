@@ -1,0 +1,55 @@
+<div [formGroup]="form"  class="form-group">
+
+    <div [ngSwitch]="input.controlType">
+
+      <div *ngSwitchCase="'numeric'">
+        <label [attr.for]="input.key">{{input.label}}</label>
+        <input class="form-control" [formControlName]="input.key" [id]="input.key"  >
+        <div *ngIf="!isValid"class="input-error">{{input.label}} - неверный формат</div>
+      </div>
+      <div *ngSwitchCase="'integer'">
+        <label [attr.for]="input.key">{{input.label}}</label>
+        <input class="form-control" [formControlName]="input.key" [id]="input.key"  >
+        <div *ngIf="!isValid" class="input-error">{{input.label}} - неверный формат</div>
+      </div>
+      <div *ngSwitchCase="'numeric(20,6)'">
+        <label [attr.for]="input.key">{{input.label}}</label>
+        <input class="form-control" [formControlName]="input.key" [id]="input.key" >
+        <div *ngIf="!isValid" class="input-error">{{input.label}} - неверный формат</div>
+      </div>
+
+      <div *ngSwitchCase="'timestamp'">
+        <mat-form-field appearance="fill">
+            <mat-label [attr.for]="input.key">{{input.label}}</mat-label>
+            <input matInput [matDatepicker]="picker1" (dateChange)="addEvent('change', $event)" [formControlName]="input.key" [id]="input.key" >
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker   #picker1></mat-datepicker>
+        </mat-form-field>
+        <div *ngIf="!isValid" class="input-error">{{input.label}} - неверный формат</div>
+      </div>
+      <div *ngSwitchCase="'boolean'">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" [formControlName]="input.key" [id]="input.key">
+          <label class="form-check-label" [attr.for]="input.key">{{input.label}}</label>
+        </div>
+      </div>
+      <div *ngSwitchCase="'string'">
+        <mat-form-field [formControlName]="input.key" ngDefaultControl>
+            <mat-label>{{input.label}}</mat-label>
+            <textarea  class="form-control" [formControlName]="input.key" [id]="input.key" matInput rows="3" required></textarea>
+        </mat-form-field>
+        <div *ngIf="!isValid" class="input-error">{{input.label}} - неверный формат</div>
+        </div>
+        <div *ngSwitchCase="'entity_id'">
+          <mat-form-field ngDefaultControl>
+            <mat-label>{{input.label}}</mat-label>
+            <mat-select  [formControlName]="input.key"   >
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let name of instancesList" [value]="name.id"> {{ name.name }} </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div *ngIf="!isValid" class="input-error">{{input.label}} - неверный формат</div>
+        </div>  
+    </div>
+</div>

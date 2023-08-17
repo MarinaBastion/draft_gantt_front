@@ -1,0 +1,37 @@
+ <div class="col_fields">
+    <mat-form-field appearance="fill" class="mat_form_field_width">
+        <mat-label class="entity_label">Сущности</mat-label>
+        <mat-select [(ngModel)]="selectedEntity" (selectionChange)="onEntityChanged()" >
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let entity of listOfEntities" [value]="entity.id"> {{ entity.name }} </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class="row_block">
+    <div class="col_fields_small">
+    <mat-label class="entity_label">Добавленные поля</mat-label>
+    <mat-selection-list #addedFields  [(ngModel)]="selectedFieldForEntity" [multiple]="false" (click)="isCommonFields=false;isSelected=true">
+        <mat-list-option class="mat_list_label" *ngFor="let field of listOfFieldsForEntity" [value]="field.id" >
+          {{field.name}}
+        </mat-list-option>
+    </mat-selection-list>
+    </div>
+    <div class="col_fields_small_arrow">
+    <button mat-button class="button-arrow" color="primary" (click)="moveField();addedFields.deselectAll();Fields.deselectAll()"> <mat-icon>{{ getIconByItemState(isCommonFields) }}</mat-icon></button>
+    </div>
+    <div class="col_fields_small">
+        <mat-label class="entity_label">Поля</mat-label>
+        <mat-selection-list #Fields [(ngModel)]="selectedField" [multiple]="false" (click)="isCommonFields=true;isSelected=true">
+            <mat-list-option class="mat_list_label" *ngFor="let field of listOfFieldsFiltered" [value]="field.id" >
+            {{field.name}}
+            </mat-list-option>
+        </mat-selection-list>
+    </div>
+</div>
+      
+<!-- #docregion action-bar -->
+    <mat-action-row>
+      <button mat-button class="add_button" color="primary" (click)="addEntityField()">Добавить</button>
+    </mat-action-row>
+</div>
+
+ 

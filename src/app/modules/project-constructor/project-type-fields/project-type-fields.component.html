@@ -1,0 +1,38 @@
+типы проектов 
+<div class="col_fields">
+    <mat-form-field appearance="fill">
+        <mat-label>Типы проектов</mat-label>
+        <mat-select [(ngModel)]="selectedProjectType" (selectionChange)="onProjectTypeChanged()" >
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let projectType of listOfProjectTypes" [value]="projectType.id"> {{ projectType.name }} </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class="row_block">
+    <div class="col_fields_small">
+    <mat-label>Добавленные поля</mat-label>
+    <mat-selection-list #addedFields  [(ngModel)]="selectedFieldForProjectType" [multiple]="false" (click)="isCommonFields=false;isSelected=true">
+        <mat-list-option *ngFor="let field of listOfFieldsForProjectType" [value]="field.id" >
+          {{field.name}}
+        </mat-list-option>
+    </mat-selection-list>
+    </div>
+    <div class="col_fields_small">
+    <button mat-button color="primary" (click)="moveField();addedFields.deselectAll();Fields.deselectAll()"> <mat-icon>{{ getIconByItemState(isCommonFields) }}</mat-icon></button>
+    </div>
+    <div class="col_fields_small">
+        <mat-label>Поля</mat-label>
+        <mat-selection-list #Fields [(ngModel)]="selectedField" [multiple]="false" (click)="isCommonFields=true;isSelected=true">
+            <mat-list-option *ngFor="let field of listOfFieldsFiltered" [value]="field.id" >
+            {{field.name}}
+            </mat-list-option>
+        </mat-selection-list>
+    </div>
+</div>
+      
+<!-- #docregion action-bar -->
+    <mat-action-row>
+      <button mat-button color="primary" (click)="addProjectTypeField()">Добавить</button>
+    </mat-action-row>
+</div>
+
+ 
